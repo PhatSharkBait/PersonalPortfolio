@@ -1,19 +1,50 @@
-#welcome-div {
+#navbar{
     margin: -10px;
     background-color: #5588ff;
+    color: #ff4444; 
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
-}
-#welcome-section { 
-    display: flex;
-    text-align: right;
-    color: #ff4444; 
-    background-color: #5588ff;
-}
-#welcome-section h1 {
+} 
+#navbar h1 {
     display: flex;
     margin: 15px;
     padding: 0px 10px 0px 10px;
     text-shadow: 2px 2px 5px black;
+}
+#welcome-section {
+    margin: -20px;
+    text-align: center;
+    background-color: #ff4444;
+}
+#projects {
+    display: flex;
+    margin: -20px;
+    background-color: #ff4444;
+}
+.project-tile {
+    text-align: center;
+}
+.project-img {
+    height: 250px;
+    display: block;
+}
+.project-caption{
+    font-size: large;
+    opacity: 0;
+    position: relative;
+    margin-top: -25px;
+    padding-bottom: 3px;
+    z-index: 2;
+    background-color: #5588ffcc;
+    -webkit-transition: .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+}
+.project-tile:hover .project-caption {
+    opacity: 1;
+}
+
+.project-tile a:visited{
+    color: red;
+    font-style: italic;
 }
