@@ -1,0 +1,19 @@
+#welcome-div {
+    margin: -10px;
+    background-color: #5588ff;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+#welcome-section { 
+    display: flex;
+    text-align: right;
+    color: #ff4444; 
+    background-color: #5588ff;
+}
+#welcome-section h1 {
+    display: flex;
+    margin: 15px;
+    padding: 0px 10px 0px 10px;
+    text-shadow: 2px 2px 5px black;
+}
