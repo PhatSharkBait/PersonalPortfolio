@@ -1,19 +1,64 @@
-#welcome-div {
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#navbar {
     margin: -10px;
     background-color: #5588ff;
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
 }
-#welcome-section { 
+#navbar-items { 
     display: flex;
     text-align: right;
-    color: #ff4444; 
     background-color: #5588ff;
 }
-#welcome-section h1 {
+#navbar-items a {
+    color: #ff4444;
+    text-decoration: none; 
+}
+#navbar-items a:hover {
+    color: #ff4444bb; 
+}
+#navbar-items a:checked {
+    color: inherit; 
+}
+#navbar-items h1 {
     display: flex;
     margin: 15px;
     padding: 0px 10px 0px 10px;
     text-shadow: 2px 2px 5px black;
+}
+#welcome-section {
+    height: 100vh;
+}
+#projects {
+    background-color: #ff4444;
+    margin: 0;
+    padding: 0;
+}
+figure {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 250px;
+}
+figcaption {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    background-color: #222222bb;
+}
+.tile-img {
+    flex: inherit;
+    display: flex;
+    object-fit: cover;
+    height: 250px;
+    width: 250px;
 }
