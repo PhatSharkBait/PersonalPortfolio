@@ -36,11 +36,13 @@ html, body{
     height: 100vh;
 }
 #projects {
+    text-align: center;
     background-color: #ff4444;
     margin: 0;
-    padding: 0;
+    padding: 0px 15px 0px 15px;
 }
 figure {
+    margin: -5px;
     flex: 1;
     display: flex;
     flex-flow: column;
