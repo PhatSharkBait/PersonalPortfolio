@@ -4,9 +4,18 @@ html, body{
     margin: 0;
     padding: 0;
 }
+@media screen {
+    body {
+      background-color: #222;
+      color: lavenderblush;
+      text-shadow: 2px 2px 2px black;
+    }
+  }
 #navbar {
-    margin: -10px;
-    background-color: #5588ff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #555;
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
@@ -14,7 +23,7 @@ html, body{
 #navbar-items { 
     display: flex;
     text-align: right;
-    background-color: #5588ff;
+    background-color: #555;
 }
 #navbar-items a {
     color: #ff4444;
@@ -33,23 +42,31 @@ html, body{
     text-shadow: 2px 2px 5px black;
 }
 #welcome-section {
+    display: flex;
     height: 100vh;
+    justify-content: center;
+}
+#welcome-section h1{
+    margin: 100px;
 }
 #projects {
     text-align: center;
     background-color: #ff4444;
-    margin: 0;
-    padding: 0px 15px 0px 15px;
+    padding: 0px 15px 15px 15px;
 }
 figure {
-    margin: -5px;
+    margin: 15px;
     flex: 1;
     display: flex;
     flex-flow: column;
     align-items: center;
     width: 250px;
 }
+figure:hover {
+    opacity: 90%;
+}
 figcaption {
+    margin-top: -15px;
     display: block;
     width: 100%;
     text-align: center;
@@ -63,4 +80,26 @@ figcaption {
     object-fit: cover;
     height: 250px;
     width: 250px;
+}
+#contact {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    background-color: #555;
+}
+#contactText {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+#contactLink {
+    display: flex;
+    justify-content: center;
+    background-color: #555;
+}
+.logoFit {
+    display: flex;
+    background-color: inherit;
+    height: 25px;
 }
