@@ -50,15 +50,26 @@ html, body{
     margin: 100px;
 }
 #projects {
+    display: flex;
+    flex-flow: column;
     text-align: center;
     background-color: #ff4444;
     padding: 0px 15px 15px 15px;
 }
+#projects h1{
+    flex-basis: 100%;
+    align-self: flex-start;
+}
+#tiles {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
 figure {
-    margin: 15px;
-    flex: 1;
     display: flex;
     flex-flow: column;
+    margin: 15px;
+    flex: 1;
     align-items: center;
     width: 250px;
 }
@@ -68,7 +79,7 @@ figure:hover {
 figcaption {
     margin-top: -15px;
     display: block;
-    width: 100%;
+    width: inherit;
     text-align: center;
     font-size: larger;
     font-weight: bold;
@@ -76,7 +87,6 @@ figcaption {
 }
 .tile-img {
     flex: inherit;
-    display: flex;
     object-fit: cover;
     height: 250px;
     width: 250px;
