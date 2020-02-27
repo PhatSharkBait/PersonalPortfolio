@@ -113,3 +113,9 @@ figcaption {
     background-color: inherit;
     height: 25px;
 }
+.starPic {
+    flex: inherit;
+    object-fit: cover;
+    height: 250px;
+    width: 250px;
+}
