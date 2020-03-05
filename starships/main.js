@@ -13,6 +13,10 @@ function populateNav(starships) {
         let listItem = document.createElement("li")
         listItem.textContent = starship.name
 
+        anchorWrap.addEventListener("click", (event) => {
+            console.log("NOICE CLICK")
+        })
+
         anchorWrap.appendChild(listItem)
         navList.appendChild(anchorWrap)
         nav.appendChild(navList)
