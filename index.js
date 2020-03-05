@@ -1,6 +1,4 @@
 
-console.log("I'm Here")
-
 let starPic = document.createElement("img")
 
 
@@ -9,6 +7,9 @@ const picSelect = () => {
     return selector;
 }
 
+const picChange = () => {
+    starPic.src = `https://starwars-visualguide.com/assets/img/characters/${picSelect()}.jpg`;
+}
 starPic.src = `https://starwars-visualguide.com/assets/img/characters/${picSelect()}.jpg`;
 starPic.className = "tile-img"
 starPic.addEventListener("error", (event) => {
@@ -17,3 +18,4 @@ starPic.addEventListener("error", (event) => {
 })
 let figIMG = document.querySelector(".starAnc")
 figIMG.appendChild(starPic)
+

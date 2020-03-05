@@ -1,10 +1,9 @@
 import { films } from "../data/films.js"
 import { people } from "../data/people.js"
-import { starships } from "../data/starships.js"
 
 console.log("Hello There")
 
-const greetingDiv = document.querySelector(".greeting")
+const gallery = document.querySelector(".gallery")
 
 const maleBut = document.querySelector("#mBut")
 const femaleBut = document.querySelector("#fBut")
@@ -24,22 +23,28 @@ function getCharNumber(url) {
     if (url.charAt(start) == "/"){
         start ++
     }
-    console.log(`Start is: ${url.charAt(start)} and end is: ${url.charAt(end)}`)
-    console.log(url.slice(start, end))
     return url.slice(start, end)
 }
 
-console.log(otherCharacters)
+function removeChildren(element) {
+    while(element.firstChild){
+        element.removeChild(element.firstChild)
+    }
+}
 
 maleBut.addEventListener("click", (event) => {
+    removeChildren(gallery)
     populateDOM(people.filter(person => person.gender === "male"))
 })
 femaleBut.addEventListener("click", (event) => {
+    removeChildren(gallery)
     populateDOM(people.filter(person => person.gender === "female"))
 })
 otherBut.addEventListener("click", (event) => {
+    removeChildren(gallery)
     populateDOM(otherCharacters)
 })
+
 
 function populateDOM(characters) {
 
@@ -61,7 +66,7 @@ function populateDOM(characters) {
         })
 
         anchorWrap.appendChild(imageItem)
-        greetingDiv.appendChild(anchorWrap)
+        gallery.appendChild(anchorWrap)
     })
 }
 

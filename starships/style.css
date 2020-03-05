@@ -1,0 +1,20 @@
+:root {
+    border: black;
+}
+
+a {
+    text-emphasis: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.container {
+    display: flex;
+}
+
+.nav {
+    border: solid 2px black;
+    padding-right: 1rem
+}
