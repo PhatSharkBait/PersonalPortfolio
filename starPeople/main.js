@@ -1,5 +1,5 @@
-import { films } from "../data/films.js"
 import { people } from "../data/people.js"
+import { getLastNumber, removeChildren} from "../utility.js"
 
 console.log("Hello There")
 
@@ -14,23 +14,6 @@ const otherCharacters = people.filter(person => {
         return person
     }
 })
-
-let result
-
-function getCharNumber(url) {
-    let end = url.lastIndexOf('/')
-    let start = end - 2
-    if (url.charAt(start) == "/"){
-        start ++
-    }
-    return url.slice(start, end)
-}
-
-function removeChildren(element) {
-    while(element.firstChild){
-        element.removeChild(element.firstChild)
-    }
-}
 
 maleBut.addEventListener("click", (event) => {
     removeChildren(gallery)
@@ -49,7 +32,7 @@ otherBut.addEventListener("click", (event) => {
 function populateDOM(characters) {
 
     characters.forEach(person => {
-        let charNum = getCharNumber(person.url)
+        let charNum = getLastNumber(person.url)
         let anchorWrap = document.createElement("a")
         anchorWrap.href = "#"
 
