@@ -24,6 +24,7 @@ img {
     margin: 1px;
     border: solid black 5px;
     object-fit: cover;
+    width: 100%;
 }
 
 button {
@@ -46,4 +47,9 @@ li {
 .nav {
     border: solid 2px black;
     padding-right: 1rem
+}
+
+main {
+    display: flex;
+    width: 100%;
 }
