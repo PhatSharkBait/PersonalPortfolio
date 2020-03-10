@@ -26,11 +26,12 @@ const shipChange = () => {
 let peoplePic = document.createElement("img")
 // peoplePic.className = "tile-img"
 peoplePic.src = `https://starwars-visualguide.com/assets/img/characters/${peopleSelect()}.jpg`;
+peoplePic.className = "peoplePic"
 
 let shipPic = document.createElement("img")
 // shipPic.className = "tile-img"
 shipPic.src = `https://starwars-visualguide.com/assets/img/ship/${shipSelect()}.jpg`;
-
+shipPic.className = "shipPic"
 
 peoplePic.addEventListener("error", (event) => {
     peopleChange()

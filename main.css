@@ -114,3 +114,13 @@ figcaption {
     background-color: inherit;
     height: 25px;
 }
+.peoplePic{
+    flex: inherit;
+    object-fit: cover;
+    width: 300px;
+}
+.shipPic{
+    flex: inherit;
+    object-fit: cover;
+    width: 400px;
+}

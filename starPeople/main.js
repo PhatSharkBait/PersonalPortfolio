@@ -55,6 +55,7 @@ function populateDOM(characters) {
 
         let imageItem = document.createElement("img")
         imageItem.src = `https://starwars-visualguide.com/assets/img/characters/${charNum}.jpg`
+        imageItem.className = "tile-img"
         imageItem.addEventListener("click", (event) => {
             console.log(event)
         })
