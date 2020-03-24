@@ -25,6 +25,9 @@ img {
     border: solid black 5px;
     object-fit: cover;
     width: 100%;
+    margin-top: 12.5%;
+    height: 75%;
+    background-size: contain;
 }
 
 button {
