@@ -3,6 +3,11 @@
     flex-flow: row wrap;
     justify-content: center;
 }
+.senators{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
 .main h4{
     margin: 5px;
 }
