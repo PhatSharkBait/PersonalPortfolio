@@ -1,7 +1,25 @@
 import {senators} from "../data/senators.js"
+import {removeChildren} from "../utility.js"
 
 const senatorDiv = document.querySelector('.senators')
 const main = document.querySelector('.main')
+const repBut = document.querySelector(".rBut")
+const demBut = document.querySelector(".dBut")
+const otherBut = document.querySelector(".oBut")
+
+repBut.addEventListener("click", (event) => {
+    removeChildren(senatorDiv)
+    populateSenatorDiv(senatorNames.filter(senator => senator.party === "R"))
+})
+demBut.addEventListener("click", (event) => {
+    removeChildren(senatorDiv)
+    populateSenatorDiv(senatorNames.filter(senator => senator.party === "D"))
+})
+otherBut.addEventListener("click", (event) => {
+    removeChildren(senatorDiv)
+    populateSenatorDiv(senatorNames.filter(senator => senator.party === "ID"))
+})
+
 
 function populateSenatorDiv(senators) {
     senators.forEach(senator => {
@@ -25,7 +43,8 @@ const senatorNames = senators.map(senator => {
     return{
         id:senator.id,
         name: `${senator.first_name}${middleName}${senator.last_name}`,
-        imgURL: `https://www.govtrack.us/static/legislator-photos/${senator.govtrack_id}-200px.jpeg`
+        imgURL: `https://www.govtrack.us/static/legislator-photos/${senator.govtrack_id}-200px.jpeg`,
+        party:senator.party
     }
 })
 
