@@ -7,22 +7,36 @@ const repBut = document.querySelector(".rBut")
 const demBut = document.querySelector(".dBut")
 const otherBut = document.querySelector(".oBut")
 
+function getSimplifiedSenators(senatorArray) {
+    return senatorArray.map(senator => {
+    let middleName = senator.middle_name ? ` ${senator.middle_name} ` : ' '
+    return{
+        id:senator.id,
+        name: `${senator.first_name}${middleName}${senator.last_name}`,
+        imgURL: `https://www.govtrack.us/static/legislator-photos/${senator.govtrack_id}-200px.jpeg`,
+        party:senator.party,
+        seniority: parseInt(senator.seniority, 10)
+    }
+})
+}
+
+
 repBut.addEventListener("click", (event) => {
     removeChildren(senatorDiv)
-    populateSenatorDiv(senatorNames.filter(senator => senator.party === "R"))
+    populateSenatorDiv(republicans)
 })
 demBut.addEventListener("click", (event) => {
     removeChildren(senatorDiv)
-    populateSenatorDiv(senatorNames.filter(senator => senator.party === "D"))
+    populateSenatorDiv(democrats)
 })
 otherBut.addEventListener("click", (event) => {
     removeChildren(senatorDiv)
-    populateSenatorDiv(senatorNames.filter(senator => senator.party === "ID"))
+    populateSenatorDiv(others)
 })
 
 
-function populateSenatorDiv(senators) {
-    senators.forEach(senator => {
+function populateSenatorDiv(simpleSenators) {
+    simpleSenators.forEach(senator => {
 
         let senFigure = document.createElement('figure')
         let figImg = document.createElement('img')
@@ -38,16 +52,24 @@ function populateSenatorDiv(senators) {
     main.appendChild(senatorDiv)
 }
 
-const senatorNames = senators.map(senator => {
-    let middleName = senator.middle_name ? ` ${senator.middle_name} ` : ' '
-    return{
-        id:senator.id,
-        name: `${senator.first_name}${middleName}${senator.last_name}`,
-        imgURL: `https://www.govtrack.us/static/legislator-photos/${senator.govtrack_id}-200px.jpeg`,
-        party:senator.party
-    }
-})
+const filterSenators = (prop, value) => {
+    return senators.filter(senator => {
+        return senator[prop] === value
+    })
+}
 
-populateSenatorDiv(senatorNames)
+const republicans = filterSenators('party', 'R')
+const democrats = filterSenators('party', 'D')
+const others = filterSenators('party', 'ID')
 
-//https://www.govtrack.us/static/legislator-photos/300002-200px.jpeg
+const mostSeniority = getSimplifiedSenators(republicans).reduce(
+    (acc, senator) => {
+        return acc.seniority > senator.seniority ? acc : senator
+    }, {}
+)
+
+console.log(mostSeniority)
+
+populateSenatorDiv(getSimplifiedSenators(senators))
+
+
