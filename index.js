@@ -2,47 +2,40 @@ let peopleAnc = document.querySelector(".peopleAnc")
 let shipAnc = document.querySelector(".shipAnc")
 
 function timer() {
-    peopleChange();
-    shipChange();
+    picChange('people')
+    picChange('ship')
 }
 
-const peopleSelect = () => {
-    const selector = Math.floor(Math.random() * 87) + 1
-    return selector;
-}
-const shipSelect = () => {
-    const selector = Math.floor(Math.random() * 37) + 1
-    return selector;
+function selectNum(range) {
+    return Math.floor(Math.random() * range) + 1
 }
 
-const peopleChange = () => {
-    peoplePic.src = `https://starwars-visualguide.com/assets/img/characters/${peopleSelect()}.jpg`;
-}
-
-const shipChange = () => {
-    shipPic.src = `https://starwars-visualguide.com/assets/img/starships/${shipSelect()}.jpg`;
+function picChange(page){
+    if (page == "people") {
+        peoplePic.src = `https://starwars-visualguide.com/assets/img/characters/${selectNum(87)}.jpg`;
+    } else if (page == "ship"){
+        shipPic.src = `https://starwars-visualguide.com/assets/img/starships/${selectNum(37)}.jpg`;
+    }
 }
 
 let peoplePic = document.createElement("img")
 // peoplePic.className = "tile-img"
-peoplePic.src = `https://starwars-visualguide.com/assets/img/characters/${peopleSelect()}.jpg`;
+peoplePic.src = `https://starwars-visualguide.com/assets/img/characters/${selectNum(87)}.jpg`;
 peoplePic.className = "peoplePic"
 
 let shipPic = document.createElement("img")
 // shipPic.className = "tile-img"
-shipPic.src = `https://starwars-visualguide.com/assets/img/ship/${shipSelect()}.jpg`;
+shipPic.src = `https://starwars-visualguide.com/assets/img/starships/${selectNum(37)}.jpg`;
 shipPic.className = "shipPic"
 
 peoplePic.addEventListener("error", (event) => {
-    peopleChange()
+    picChange('people')
 })
 
 shipPic.addEventListener("error", (event) => {
-    shipChange()
+    picChange('ship')
 })
 
 
 peopleAnc.appendChild(peoplePic)
 shipAnc.appendChild(shipPic)
-
-populateLink()
