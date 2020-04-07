@@ -41,6 +41,7 @@ color: black;
 .flip-card-back {
 background-color: #ff4444;
 color: lavenderblush;
+text-shadow: black;
 transform: rotateY(180deg);
 }
 
@@ -48,4 +49,11 @@ transform: rotateY(180deg);
 width: inherit;
 height: inherit;
 object-fit: fill;
+}
+
+.pokemonGrid {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
