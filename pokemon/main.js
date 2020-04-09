@@ -33,9 +33,16 @@ const colorPicker = {
     "psychic": "#da3168",
     "rock": "#9f873d",
     "steel": "#8d8a9b",
-    "water": "#8d8a9b",
+    "water": "#1064bc",
+    "dragon": "slateblue"
 }
 
+//change Pokemon id so we can access the pokemon images
+Number.prototype.pad = function(size) {
+  var s = String(this);
+  while (s.length < (size || 2)) {s = "0" + s;}
+  return s;
+}
 
 
 async function getAPIData(url) {
@@ -65,37 +72,45 @@ function populatePokeCards(singlePokemon) {
         pokeScene.className = "flip-card"
         let pokeCard = document.createElement('div')
         pokeCard.className = "flip-card-inner"
-
-        // let type1 = document.createElement('div')
-        // type1.className = singlePokemon.types[0].type.name
-        // let type2 = document.createElement('div')
-        // if (singlePokemon.types.length > 1){
-        //     type2.className = singlePokemon.types[1].type.name
-        // } else {
-        //     type2.className = type1.className
-        //     console.log(type2)
-        // }
-
-        let pokeImg = document.createElement('img')
-        pokeImg.className = "pokeImg"
-        pokeImg.src = singlePokemon.sprites.front_default
+        pokeScene.addEventListener ("click", () => {
+          pokeCard.classList.toggle('is-flipped')
+        })
         
-        let pokeFront = document.createElement('div')
+        let pokeFront = populateCardFront(singlePokemon)
         pokeFront.className = "flip-card-front"
         pokeFront.style = `background-image: linear-gradient(${getColors(singlePokemon)})`
-        console.log(getColors(singlePokemon))
 
-        let pokeBack = document.createElement('div')
+        let pokeBack = populateCardBack(singlePokemon)
         pokeBack.className = "flip-card-back"
-        pokeBack.textContent = singlePokemon.name
 
-        // pokeFront.appendChild(type1)
-        // pokeFront.appendChild(type2)
-        pokeFront.appendChild(pokeImg)
         pokeCard.appendChild(pokeFront)
         pokeCard.appendChild(pokeBack)
         pokeScene.appendChild(pokeCard)
         pokemonGrid.appendChild(pokeScene)
+}
+
+function populateCardFront(pokemon) {
+  let cardFront = document.createElement('div')
+  let pokeImg = document.createElement('img')
+  pokeImg.className = "pokeImg"
+  pokeImg.src = `../data/images/${(pokemon.id).pad(3)}.png`
+
+  cardFront.appendChild(pokeImg)
+  return cardFront
+}
+
+function populateCardBack(pokemon) {
+  let cardBack = document.createElement('div')
+  let name = document.createElement("h1")
+  name.className = "pokeName"
+  name.textContent = pokemon.species.name
+  let pokeStats = document.createElement('div')
+  pokeStats.className = "pokeStats"
+  pokeStats.textContent = `${pokemon.stats[0].base_stat}`
+
+  cardBack.appendChild(name)
+  cardBack.appendChild(pokeStats)
+  return cardBack
 }
 
 function getColors(pokemon){
@@ -105,11 +120,8 @@ function getColors(pokemon){
         } else {
             type2 = type1
         }
+    
     return [colorPicker[type1], colorPicker[type2]]
 
     
 }
-/*var card = document.querySelector('.flip-card')
-card.addEventListener('click', function() {
-    card.classList.toggle('is-flipped')
-})*/

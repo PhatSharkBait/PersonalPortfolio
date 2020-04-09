@@ -20,8 +20,12 @@ transform-style: preserve-3d;
 }
 
 /* Do an horizontal flip when you hold click the flip box container */
-.flip-card:active .flip-card-inner {
+/* .flip-card:active .flip-card-inner {
 transform: rotateY(180deg);
+} */
+
+.flip-card-inner.is-flipped{
+  transform: rotateY(180deg);
 }
 
 /* Position the front and back side */
@@ -54,6 +58,7 @@ object-fit: fill;
 position: absolute;
 right: 0%;
 top: 0%;
+pointer-events: none;
 }
 
 .pokemonGrid {
