@@ -1,5 +1,3 @@
-const allPokemon = []
-
 // function getPokeData(url) {
 //     fetch(url).then(function(response) {
 //         response.json().then(function (pokeData){
@@ -67,7 +65,6 @@ async function getAPIData(url) {
 let pokemonGrid = document.querySelector(".pokemonGrid")
 
 function populatePokeCards(singlePokemon) {
-        console.log(singlePokemon)
         let pokeScene = document.createElement('div')
         pokeScene.className = "flip-card"
         let pokeCard = document.createElement('div')
@@ -121,7 +118,7 @@ function getColors(pokemon){
             type2 = type1
         }
     
-    return [colorPicker[type1], colorPicker[type2]]
+    return [colorPicker[type2], colorPicker[type1]] //reversed so main type is on top
 
     
 }
