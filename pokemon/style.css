@@ -1,12 +1,15 @@
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
-    background-color: transparent;
-    width: 400px;
-    height: 400px;
-    border: 3px solid black;
-    margin: 15px;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  }
+  background-color: transparent;
+  width: 400px;
+  height: 400px;
+  margin: 15px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.flip-card-inner.is-legendary{
+  border: 3px solid gold;
+}
 
 /* This container is needed to position the front and back side */
 .flip-card-inner {
@@ -17,6 +20,7 @@ height: 100%;
 text-align: center;
 transition: transform 0.6s;
 transform-style: preserve-3d;
+border: 3px solid black;
 }
 
 /* Do an horizontal flip when you hold click the flip box container */
@@ -66,6 +70,10 @@ pointer-events: none;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+
+.pokeName {
+  font-family: 'Girassol', cursive;
 }
 
 /* .grass {
