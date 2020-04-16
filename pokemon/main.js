@@ -14,6 +14,11 @@
 //         })
 //     })
 // }
+function scroll() {
+  $('html,body').animate({
+    scrollTop: $('main div').last().offset().top},
+    'slower');
+}
 let legendaryList = [
   144, 145, 146, 150, 151, 243, 244, 245, 249, 250, 251, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 480, 481, 482, 483, 484, 485, 486, 487, 488, 491, 638, 639, 640, 808, 809, 999
   ]
@@ -39,29 +44,23 @@ const colorPicker = {
     "dragon": "slateblue"
 }
 
-$("button").click(function() {
-  $('html,body').animate({
-      scrollTop: $('main div').last().offset().top},
-      'slower');
-});
-
 let startButton = document.querySelector("#start")
 let randomButton = document.querySelector("#randomButton")
 let meButton = document.querySelector('#meButton')
 
 startButton.addEventListener('click', () => {
   loadPage()
+  scroll()
 })
 
 randomButton.addEventListener('click', () => {
   randomPokemon()
-  // document.querySelector('.main').animate({
-  //   scrollTop: (document.querySelector(".scroll")).offset().top},
-  //   'slow');
+  scroll()
 })
 
 meButton.addEventListener('click', () => {
   mePokemon()
+  scroll()
 })
 //change Pokemon id so we can access the pokemon images
 Number.prototype.pad = function(size) {
