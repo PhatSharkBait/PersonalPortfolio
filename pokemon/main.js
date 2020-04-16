@@ -100,13 +100,9 @@ function populatePokeCards(singlePokemon) {
   if (legendaryList.includes(singlePokemon.id)) {
     pokeCard.classList.toggle('is-legendary')
   }
-  if (singlePokemon.scroll) {
-    pokeScene.classList.toggle('scroll')
-  }
   pokeScene.addEventListener ("click", () => {
     pokeCard.classList.toggle('is-flipped')
   })
-  
   let pokeFront = populateCardFront(singlePokemon)
   pokeFront.className = "flip-card-front"
   pokeFront.style = `background-image: linear-gradient(${getColors(singlePokemon)})`
@@ -156,11 +152,10 @@ function getColors(pokemon){
 }
 
 class Pokemon {
-  constructor(name, id, types, scroll) {
+  constructor(name, id, types) {
     this.species = name
     this.id = id
     this.types = types
-    this.scroll = scroll
   }
 }
 
@@ -194,8 +189,7 @@ function mePokemon() {
           "url": "https://pokeapi.co/api/v2/type/1/"
         }
       }
-    ],
-    'scroll'
+    ]
     )
   populatePokeCards(me)
 }
