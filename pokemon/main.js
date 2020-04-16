@@ -1,4 +1,3 @@
-// import "../node_modules/jquery/dist/jquery"
 // function getPokeData(url) {
 //     fetch(url).then(function(response) {
 //         response.json().then(function (pokeData){
@@ -40,11 +39,11 @@ const colorPicker = {
     "dragon": "slateblue"
 }
 
-// $("button").click(function() {
-//   $('html,body').animate({
-//       scrollTop: $(".second").offset().top},
-//       'slow');
-// });
+$("button").click(function() {
+  $('html,body').animate({
+      scrollTop: $('main div').last().offset().top},
+      'slower');
+});
 
 let startButton = document.querySelector("#start")
 let randomButton = document.querySelector("#randomButton")

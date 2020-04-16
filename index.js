@@ -14,7 +14,7 @@ function picChange(page){
     if (page == "people") {
         peoplePic.src = `https://starwars-visualguide.com/assets/img/characters/${selectNum(87)}.jpg`;
     } else if (page == "ship"){
-        shipPic.src = `https://starwars-visualguide.com/assets/img/starships/${selectNum(37)}.jpg`;
+        shipPic.src = `https://starwars-visualguide.com/assets/img/starships/${selectNum(25)}.jpg`;
     }
 }
 
