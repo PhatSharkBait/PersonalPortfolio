@@ -1,3 +1,4 @@
+// import "../node_modules/jquery/dist/jquery"
 // function getPokeData(url) {
 //     fetch(url).then(function(response) {
 //         response.json().then(function (pokeData){
@@ -39,6 +40,12 @@ const colorPicker = {
     "dragon": "slateblue"
 }
 
+// $("button").click(function() {
+//   $('html,body').animate({
+//       scrollTop: $(".second").offset().top},
+//       'slow');
+// });
+
 let startButton = document.querySelector("#start")
 let randomButton = document.querySelector("#randomButton")
 let meButton = document.querySelector('#meButton')
@@ -49,6 +56,9 @@ startButton.addEventListener('click', () => {
 
 randomButton.addEventListener('click', () => {
   randomPokemon()
+  // document.querySelector('.main').animate({
+  //   scrollTop: (document.querySelector(".scroll")).offset().top},
+  //   'slow');
 })
 
 meButton.addEventListener('click', () => {
@@ -91,6 +101,9 @@ function populatePokeCards(singlePokemon) {
   pokeCard.className = "flip-card-inner"
   if (legendaryList.includes(singlePokemon.id)) {
     pokeCard.classList.toggle('is-legendary')
+  }
+  if (singlePokemon.scroll) {
+    pokeScene.classList.toggle('scroll')
   }
   pokeScene.addEventListener ("click", () => {
     pokeCard.classList.toggle('is-flipped')
@@ -145,10 +158,11 @@ function getColors(pokemon){
 }
 
 class Pokemon {
-  constructor(name, id, types) {
+  constructor(name, id, types, scroll) {
     this.species = name
     this.id = id
     this.types = types
+    this.scroll = scroll
   }
 }
 
@@ -182,7 +196,8 @@ function mePokemon() {
           "url": "https://pokeapi.co/api/v2/type/1/"
         }
       }
-    ]
+    ],
+    'scroll'
     )
   populatePokeCards(me)
 }
