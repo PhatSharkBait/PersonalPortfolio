@@ -8,6 +8,18 @@
     flex-flow: row wrap;
     justify-content: center;
 }
+
+.senCard{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.progressDiv{
+    display: flex;
+    flex-flow: column;
+}
+
 .main h4{
     margin: 5px;
 }
