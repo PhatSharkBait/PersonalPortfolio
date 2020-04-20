@@ -118,6 +118,7 @@ figcaption {
 .peoplePic{
     flex: inherit;
     object-fit: cover;
+    height: 350px;
     width: 300px;
 }
 .shipPic{
