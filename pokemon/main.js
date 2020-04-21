@@ -50,17 +50,17 @@ let meButton = document.querySelector('#meButton')
 
 startButton.addEventListener('click', () => {
   loadPage()
-  scroll()
+  setTimeout(scroll(), 100)
 })
 
 randomButton.addEventListener('click', () => {
   randomPokemon()
-  scroll()
+  setTimeout(scroll(), 100)
 })
 
 meButton.addEventListener('click', () => {
   mePokemon()
-  scroll()
+  setTimeout(scroll(), 100)
 })
 //change Pokemon id so we can access the pokemon images
 Number.prototype.pad = function(size) {
