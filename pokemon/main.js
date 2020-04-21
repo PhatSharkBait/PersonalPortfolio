@@ -181,7 +181,7 @@ class Pokemon {
 
 //For New Pokemon Button, Selects random Pokemon, possible to get repeats
 function randomPokemon() {
-  selector = Math.floor(Math.random()* 810) + 26 //Random number between 26 and 809
+  selector = Math.floor(Math.random()* 781) + 26 //Random number between 26 and 809
   getAPIData(`https://pokeapi.co/api/v2/pokemon/${selector}`).then((pokeData)  => {
     populatePokeCards(pokeData)
   })
