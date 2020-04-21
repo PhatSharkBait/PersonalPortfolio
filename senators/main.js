@@ -6,6 +6,8 @@ const main = document.querySelector('.main')
 const repBut = document.querySelector(".rBut")
 const demBut = document.querySelector(".dBut")
 const otherBut = document.querySelector(".oBut")
+const seniorityBut = document.querySelector("#seniority")
+const alphabetBut = document.querySelector("#alphabet")
 
 function getSimplifiedSenators(senatorArray) {
     return senatorArray.map(senator => {
@@ -22,7 +24,10 @@ function getSimplifiedSenators(senatorArray) {
     }
 })
 }
-
+//sort by seniority (most to least)
+const sortedSenators = getSimplifiedSenators(senators).sort((a, b) => {
+    return parseInt(b.seniority) - parseInt(a.seniority);
+})
 
 repBut.addEventListener("click", (event) => {
     removeChildren(senatorDiv)
@@ -35,6 +40,14 @@ demBut.addEventListener("click", (event) => {
 otherBut.addEventListener("click", (event) => {
     removeChildren(senatorDiv)
     populateSenatorDiv(others)
+})
+seniorityBut.addEventListener("click", (event) => {
+    removeChildren(senatorDiv)
+    populateSenatorDiv(sortedSenators)
+})
+alphabetBut.addEventListener("click", (event) => {
+    removeChildren(senatorDiv)
+    populateSenatorDiv(getSimplifiedSenators(senators))
 })
 
 
@@ -93,7 +106,7 @@ function progressBars(senator) {
 }
 
 const filterSenators = (prop, value) => {
-    return senators.filter(senator => {
+    return getSimplifiedSenators(senators).filter(senator => {
         return senator[prop] === value
     })
 }
@@ -114,9 +127,5 @@ const missedVotes = getSimplifiedSenators(senators).reduce(
     }, {}
 )
 
-console.log(mostSeniority)
-console.log(missedVotes)
-
 populateSenatorDiv(getSimplifiedSenators(senators))
-
 

@@ -71,9 +71,9 @@ Number.prototype.pad = function(size) {
 
 function loadPage() {
   // now, use the async getAPIData function
-  getAPIData('https://pokeapi.co/api/v2/pokemon/?&limit=25').then((data) => {
+  getAPIData('https://pokeapi.co/api/v2/pokemon/?&limit=25').then(async (data) => {
     for (const pokemon of data.results) {
-      getAPIData(pokemon.url).then((pokeData) => {
+      await getAPIData(pokemon.url).then(async (pokeData) => {
         populatePokeCards(pokeData)
       })
     }
@@ -131,11 +131,46 @@ function populateCardBack(pokemon) {
   let name = document.createElement("h1")
   name.className = "pokeName"
   name.textContent = pokemon.species.name
+
+  let pokeTypes = document.createElement('div')
+  let types = document.createElement('h2')
+  if (pokemon.types.length > 1){
+    types.textContent = pokemon.types[1].type.name + " " + pokemon.types[0].type.name
+} else {
+    types.textContent = pokemon.types[0].type.name
+}
+  types.className = "types"
   let pokeStats = document.createElement('div')
   pokeStats.className = "pokeStats"
-  //pokeStats.textContent = `${pokemon.stats[0].base_stat}`
+  let speed = document.createElement('h2')
+  speed.className = "stats"
+  speed.textContent = pokemon.stats[0].stat.name + ":  " + pokemon.stats[0].base_stat
+  let specDef = document.createElement('h2')
+  specDef.className = "stats"
+  specDef.textContent = pokemon.stats[1].stat.name + ":  " + pokemon.stats[1].base_stat
+  let specAtk = document.createElement('h2')
+  specAtk.className = "stats"
+  specAtk.textContent = pokemon.stats[2].stat.name + ":  " + pokemon.stats[2].base_stat
+  let def = document.createElement('h2')
+  def.className = "stats"
+  def.textContent = pokemon.stats[3].stat.name + ":  " + pokemon.stats[3].base_stat
+  let atk = document.createElement('h2')
+  atk.className = "stats"
+  atk.textContent = pokemon.stats[4].stat.name + ":  " + pokemon.stats[4].base_stat
+  let hp = document.createElement('h2')
+  hp.className = "stats"
+  hp.textContent = pokemon.stats[5].stat.name + ":  " + pokemon.stats[5].base_stat
 
   cardBack.appendChild(name)
+  pokeTypes.appendChild(types)
+  cardBack.appendChild(pokeTypes)
+
+  pokeStats.appendChild(speed)
+  pokeStats.appendChild(hp)
+  pokeStats.appendChild(specDef)
+  pokeStats.appendChild(specAtk)
+  pokeStats.appendChild(def)
+  pokeStats.appendChild(atk)
   cardBack.appendChild(pokeStats)
   return cardBack
 }
@@ -152,10 +187,11 @@ function getColors(pokemon){
 }
 
 class Pokemon {
-  constructor(name, id, types) {
+  constructor(name, id, types, stats) {
     this.species = name
     this.id = id
     this.types = types
+    this.stats = stats
   }
 }
 
@@ -189,7 +225,57 @@ function mePokemon() {
           "url": "https://pokeapi.co/api/v2/type/1/"
         }
       }
-    ]
+    ],
+    [
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "speed",
+          "url": "https://pokeapi.co/api/v2/stat/6/"
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "special-defense",
+          "url": "https://pokeapi.co/api/v2/stat/5/"
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "special-attack",
+          "url": "https://pokeapi.co/api/v2/stat/4/"
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "defense",
+          "url": "https://pokeapi.co/api/v2/stat/3/"
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 0,
+        "stat": {
+          "name": "attack",
+          "url": "https://pokeapi.co/api/v2/stat/2/"
+        }
+      },
+      {
+        "base_stat": 90,
+        "effort": 1,
+        "stat": {
+          "name": "hp",
+          "url": "https://pokeapi.co/api/v2/stat/1/"
+        }
+      }
+    ],
     )
   populatePokeCards(me)
 }

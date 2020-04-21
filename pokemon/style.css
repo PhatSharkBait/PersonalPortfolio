@@ -1,5 +1,6 @@
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
+  border-radius: 50px;
   background-color: transparent;
   width: 400px;
   height: 500px;
@@ -13,6 +14,7 @@
 
 /* This container is needed to position the front and back side */
 .flip-card-inner {
+border-radius: 50px;
 display: flex;
 position: relative;
 width: 100%;
@@ -34,6 +36,7 @@ transform: rotateY(180deg);
 
 /* Position the front and back side */
 .flip-card-front, .flip-card-back {
+border-radius: 50px;
 position: absolute;
 width: 100%;
 height: 100%;
@@ -75,23 +78,54 @@ pointer-events: none;
 .pokeName {
   font-family: 'Girassol', cursive;
 }
-
-
-
-/* .grass {
-  background-color: #37b81a;
-  width: 100%;
-  height: 50%;
+.types {
+  font-family: 'Girassol', cursive;
 }
 
-.bug {
-  background-color: lawngreen;
-  width: 100%;
-  height: 50%;
+.pokeStats {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  min-height: 65%;
 }
 
-.poison {
-  background-color: #8239f7;
-  width: 100%;
-  height: 50%;
-} */
+.stats{
+  min-width: 45%;
+  font-size: 23px;
+  font-family: 'Girassol', cursive;
+}
+
+header{
+  margin-top: 30px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#navbar{
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 100;
+}
+
+#navbar button{
+  border: 1px solid #cc2222;
+  background-color: #ff4444;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+}
+
+#navbar button:hover {
+  background-color: lavenderblush;
+  color: black;
+  cursor: pointer;
+}
