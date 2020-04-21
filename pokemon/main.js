@@ -1,19 +1,3 @@
-// function getPokeData(url) {
-//     fetch(url).then(function(response) {
-//         response.json().then(function (pokeData){
-//             const pokeMap = pokeData.results.map(pokemon => {
-//                 return fetch(pokemon.url).then(resData => {
-//                     console.log(resData)
-//                     resData.json().then(pokeJson => {
-//                         allPokemon.push(pokeJson)
-//                     })
-//                 })
-//             }) 
-//             console.log(pokeMap)
-//             //populatePokeCards(pokeData.results)
-//         })
-//     })
-// }
 function scroll() {
   $('html,body').animate({
     scrollTop: $('main div').last().offset().top},
