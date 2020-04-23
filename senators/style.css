@@ -23,3 +23,26 @@
 .main h4{
     margin: 5px;
 }
+
+figure {
+    width: 200px;
+}
+
+figcaption {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    width: 100%;
+}
+
+.fa-democrat {
+    color: blue;
+}
+
+.fa-republican {
+    color: red;
+}
+
+.fa-star {
+    color: rgb(131, 131, 3);
+}
