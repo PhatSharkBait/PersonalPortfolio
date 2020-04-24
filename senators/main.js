@@ -8,6 +8,8 @@ const demBut = document.querySelector(".dBut")
 const otherBut = document.querySelector(".oBut")
 const seniorityBut = document.querySelector("#seniority")
 const alphabetBut = document.querySelector("#alphabet")
+const voteBut = document.querySelector("#vote")
+const loyaltyBut = document.querySelector("#loyalty")
 
 function getSimplifiedSenators(senatorArray) {
     return senatorArray.map(senator => {
@@ -25,9 +27,21 @@ function getSimplifiedSenators(senatorArray) {
 })
 }
 //sort by seniority (most to least)
-const sortedSenators = getSimplifiedSenators(senators).sort((a, b) => {
-    return parseInt(b.seniority) - parseInt(a.seniority);
-})
+// const sortedSenators = getSimplifiedSenators(senators).sort((a, b) => {
+//     return parseInt(b.seniority) - parseInt(a.seniority);
+// })
+
+function sortedSenators(senators, buttonType) {
+    return getSimplifiedSenators(senators).sort((a, b) => {
+        if (buttonType == "seniority") {
+            return parseInt(b.seniority) - parseInt(a.seniority);
+        } else if (buttonType == "loyalty"){
+            return parseInt(b.loyaltyPct) - parseInt(a.loyaltyPct);
+        } else {
+            return parseInt(b.missedVotesPct) - parseInt(a.missedVotesPct);
+        }
+    })
+}
 
 repBut.addEventListener("click", (event) => {
     removeChildren(senatorDiv)
@@ -43,11 +57,19 @@ otherBut.addEventListener("click", (event) => {
 })
 seniorityBut.addEventListener("click", (event) => {
     removeChildren(senatorDiv)
-    populateSenatorDiv(sortedSenators)
+    populateSenatorDiv(sortedSenators(senators, "seniority"))
 })
 alphabetBut.addEventListener("click", (event) => {
     removeChildren(senatorDiv)
     populateSenatorDiv(getSimplifiedSenators(senators))
+})
+voteBut.addEventListener("click", (event) => {
+    removeChildren(senatorDiv)
+    populateSenatorDiv(sortedSenators(senators, "vote"))
+})
+loyaltyBut.addEventListener("click", (event) => {
+    removeChildren(senatorDiv)
+    populateSenatorDiv(sortedSenators(senators, "loyalty"))
 })
 
 
@@ -100,7 +122,7 @@ function progressBars(senator) {
     let votingBar = document.createElement('progress')
     votingLabel.id = 'voting'
     votingBar.max = 100
-    votingBar.value = 10
+    votingBar.value = senator.missedVotesPct
 
     progressDiv.appendChild(loyaltyLabel)
     progressDiv.appendChild(loyaltyBar)
@@ -124,12 +146,6 @@ const others = filterSenators('party', 'ID')
 const mostSeniority = getSimplifiedSenators(senators).reduce(
     (acc, senator) => {
         return acc.seniority > senator.seniority ? acc : senator
-    }, {}
-)
-
-const missedVotes = getSimplifiedSenators(senators).reduce(
-    (acc, senator) => {
-        return acc.missedVotesPct > senator.missedVotesPct ? acc : senator
     }, {}
 )
 
