@@ -92,7 +92,7 @@ header {
 }
 
 img {
-    margin: 1px;
+    margin: 10px;
     border: solid black 5px;
     object-fit: cover;
     height: 500px;
@@ -119,3 +119,5 @@ button {
     color: inherit;
     background-color: inherit;
 }
+.grow { transition: all .1s ease-in-out; }
+.grow:hover { transform: scale(1.15); }

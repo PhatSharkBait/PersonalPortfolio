@@ -34,11 +34,12 @@ function populateDOM(characters) {
     characters.forEach(person => {
         let charNum = getLastNumber(person.url)
         let anchorWrap = document.createElement("a")
-        anchorWrap.href = "#"
+        anchorWrap.href = `https://starwars-visualguide.com/#/characters/${charNum}`
+        anchorWrap.target = '_blank'
 
         let imageItem = document.createElement("img")
         imageItem.src = `https://starwars-visualguide.com/assets/img/characters/${charNum}.jpg`
-        imageItem.className = "tile-img"
+        imageItem.className = "tile-img grow"
         imageItem.addEventListener("click", (event) => {
             console.log(event)
         })
