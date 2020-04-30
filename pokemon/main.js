@@ -80,7 +80,7 @@ let pokemonGrid = document.querySelector(".pokemonGrid")
 
 function populatePokeCards(singlePokemon) {
   let pokeScene = document.createElement('div')
-  pokeScene.className = "flip-card"
+  pokeScene.className = "flip-card grow"
   let pokeCard = document.createElement('div')
   pokeCard.className = "flip-card-inner"
   if (legendaryList.includes(singlePokemon.id)) {
